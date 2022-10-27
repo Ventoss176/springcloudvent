@@ -1,8 +1,8 @@
 package com.ventoss.springcloud;
 
-import org.aspectj.weaver.ast.Or;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @authoer:Ventoss
@@ -10,8 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description:
  */
 @SpringBootApplication
-public class OrderZK80 {
+@EnableDiscoveryClient
+public class PaymentMain8006 {
     public static void main(String[] args) {
-        SpringApplication.run(OrderZK80.class,args);
+        SpringApplication.run(PaymentMain8006.class,args);
     }
 }
