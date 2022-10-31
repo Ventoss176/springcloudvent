@@ -10,7 +10,9 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @authoer:Ventoss
@@ -71,11 +73,29 @@ public class PaymentController {
         return this.discoveryClient;
 
     }
+    @GetMapping(value = "/testfilter")
+    public String getfilter(HttpServletRequest request,String NewParam,String name) {
+
+        return serverPort + request.getHeader("NewHeader") + NewParam + name;
+    }
+
+
 
     @GetMapping(value = "/payment/lb")
     public String getPaymentLB()
     {
         return serverPort;
     }
+
+    @GetMapping(value = "/payment/timeout")
+    public String getTimeout(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return serverPort;
+    }
+
 
 }
